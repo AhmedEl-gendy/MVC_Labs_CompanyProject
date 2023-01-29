@@ -1,1 +1,1 @@
-# lab-github
+# Company Project Lab

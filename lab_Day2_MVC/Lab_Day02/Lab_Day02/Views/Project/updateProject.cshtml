@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Project
+<form asp-action="updateProjectDB" asp-controller="Project">
+    <input asp-for="ProjectNumber" hidden />
+
+    <label asp-for="ProjectName">Project Name: </label>
+    <input asp-for="ProjectName" class="form-control" />
+
+    <label asp-for="ProjectLocation">Project Location: </label>
+    <input asp-for="ProjectLocation" class="form-control" />
+
+    <label asp-for="DeptNum">Department: </label>
+    <select asp-for="DeptNum" asp-items="ViewBag.depts" class="form-control">
+        <option>Choose a Department</option>
+    </select>
+
+
+    <input type="submit" value="Update" />
+</form>
+

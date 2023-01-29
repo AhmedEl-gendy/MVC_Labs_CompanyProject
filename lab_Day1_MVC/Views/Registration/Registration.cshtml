@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form action="/Thanks/Index">
+    <table>
+        <tr>
+            <td>
+                <lable for="name">Name</lable>
+            </td>
+            <td>
+                <input id="name" name="name" type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <lable for="email">Email</lable>
+            </td>
+            <td>
+                <input id="email" name="email" type="email" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <lable for="phone">Phone</lable>
+            </td>
+            <td>
+                <input id="phone" name="phone" type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td >
+                <lable for="attendence">Attendence</lable>
+            </td>  
+            <td>
+                <input id="attend" name="willAttend" type="checkbox" value="True" />
+                <lable for="attend">Will Attend</lable>
+                <input id="notattend" name="willAttend" type="checkbox" value="False" />
+                <lable for="notattend">Sorry, No</lable>
+            </td>   
+        </tr>
+    </table>
+    <br />
+    <button type="submit">Submit</button>
+</form>

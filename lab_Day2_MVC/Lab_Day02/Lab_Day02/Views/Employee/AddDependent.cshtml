@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Add Dependent</h1>
+
+<form action="/Employee/AddDependentDB">
+
+@*    <div class="form-group">
+        <label for="EmpSSN">Supervisor:</label>
+        <select name="EmpSSN" id="EmpSSN">
+            <option value="">Choose Supervisor</option>
+            @foreach (var employee in ViewBag.emp)
+            {
+                <option value="@employee.SSN">@employee.Fname @employee.Lname</option>
+            }
+        </select>
+    </div>*@
+    <input type="hidden" name="EmpSSN" value="ViewBag.employeeSSN" />
+    <div class="form-group">
+        <label for="DependName">Dependent Name:</label>
+        <input type="text" name="DependName" id="DependName" />
+    </div>
+    <div class="form-group">
+        <label for="DependBirthDate">Birth Date:</label>
+        <input type="date" name="DependBirthDate" id="DependBirthDate" />
+    </div>
+    <div class="form-group">
+        <label for="DependSex">Sex:</label>
+        <select name="DependSex" id="DependSex">
+            <option value="">Choose Gender</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="Relationship">Relationship:</label>
+        <input type="text" name="Relationship" id="Relationship" />
+    </div>
+
+        <input type="submit" value="Add" />
+</form>

@@ -1,0 +1,18 @@
+﻿
+
+<h1>department projects:</h1>
+<ul>
+    @foreach (var p in Model)
+    {
+        <br />
+        <li>Numper: @p.ProjectNumber</li>
+        <li> name: @p.ProjectName</li>
+        <li>location: @p.ProjectLocation</li>
+        <br />
+        <li>----------------------------</li>
+    }
+    
+
+</ul>
+<br />
+<a href="/Department/addEmpToDeptProject">Add an Employee to the Project</a>

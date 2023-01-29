@@ -1,0 +1,25 @@
+﻿
+@model Department
+
+<h1>Department Info</h1>
+<ul>
+    <li> ID: @Model.DeptNum</li>
+    <li>Name: @Model.DeptName</li>
+    <li>Started Date: @Model.ManagerHiredate</li>
+    <li>Locations: </li>
+    <ul>
+        @foreach (var item in Model.Locations)
+        {
+            <li>Location: @item.Loc</li>
+        }
+    </ul>
+    <li>Department Employees: </li>
+    <ul>
+    @foreach (var emp in Model.Employees)
+    {
+        <li> @(emp.Fname + " " + emp.Lname)</li>
+    }
+    </ul>
+</ul>
+<br />
+<a href="/department/ShowDeptProjects">Show Department Projects</a>

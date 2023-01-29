@@ -1,0 +1,67 @@
+﻿
+
+@*@model Project
+<form asp-action="addProjectDB" asp-controller="Project">
+    <label asp-for="ProjectName">Project Name: </label>
+    <input asp-for="ProjectName" class="form-control" />
+
+    <label asp-for="ProjectLocation">Project Location: </label>
+    <input asp-for="ProjectLocation" class="form-control" />
+
+    <label asp-for="DeptNum">Department: </label>
+    <select asp-for="DeptNum" asp-items="ViewBag.depts" class="form-control">
+        <option >Choose a Department</option>
+    </select>
+
+
+    <input type="submit" value="Add" />
+</form>*@
+
+
+@model ProjectVM
+
+<form method="post" asp-action="addProject" asp-controller="Project">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="form-group">
+        <label asp-for="ProjectName"></label>
+        <input asp-for="ProjectName" class="form-control" />
+    </div>
+    <div>
+        <span asp-validation-for="ProjectName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ProjectLocation"></label>
+        <input asp-for="ProjectLocation" class="form-control" />
+    </div>
+    <div>
+        <span asp-validation-for="ProjectLocation" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ConfirmProjectLocation"></label>
+        <input asp-for="ConfirmProjectLocation" class="form-control" />
+    </div>
+    <div>
+        <span asp-validation-for="ConfirmProjectLocation" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DeptNum"></label>
+        <select asp-for="DeptNum" asp-items="ViewBag.depts" class="form-control">
+            <option>Choose a Department</option>
+        </select>
+    </div>
+    <div>
+        <span asp-validation-for="DeptNum" class="text-danger"></span>
+    </div>
+
+    <input type="submit" value="Add" />
+</form>
+
+
+@section Scripts{
+
+    <script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

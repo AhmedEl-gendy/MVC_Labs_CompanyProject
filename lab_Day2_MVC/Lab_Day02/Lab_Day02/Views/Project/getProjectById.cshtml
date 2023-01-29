@@ -1,0 +1,16 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Project
+
+<h1>Project Info</h1>
+<ul>
+    <li> ID: @Model.ProjectNumber</li>
+    <li>Name: @Model.ProjectName</li>
+    <li>Project Location: @Model.ProjectLocation</li>
+    <li>Department: @Model.Department.DeptName</li>
+</ul>
+<br />
+<a href="/Project/ShowProjects">Show Projects</a>

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace Lab_Day02.ViewModels
 {
@@ -13,6 +14,7 @@ namespace Lab_Day02.ViewModels
 
         [Display(Name = "Location")]
         [Required(ErrorMessage = "Location is required")]
+        [Remote("validLocations", "CustomeValidation", ErrorMessage = "location must be only one of these [cairo, alex, giza]")]
         public string ProjectLocation { get; set; }
 
         [Compare("ProjectLocation")]

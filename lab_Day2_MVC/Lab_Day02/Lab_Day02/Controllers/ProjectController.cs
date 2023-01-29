@@ -59,16 +59,8 @@ namespace Lab_Day02.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult addProject(ProjectVM p)
         {
-            List<string> validLocations = new List<string> { "cairo", "alex", "giza" };
-            if (!validLocations.Contains(p.ProjectLocation))
-            {
-                ModelState.AddModelError("", "only available locations [cairo, alex, giza]");
-            }
-            //if (ModelState.GetFieldValidationState("ProjectLocation") == ModelValidationState.Valid
-            //    && p.ProjectLocation.Contains("cairo")
-            //    && p.ProjectLocation.Contains("alex")
-            //    && p.ProjectLocation.Contains("giza")
-            //    )
+            //List<string> validLocations = new List<string> { "cairo", "alex", "giza" };
+            //if (!validLocations.Contains(p.ProjectLocation))
             //{
             //    ModelState.AddModelError("", "only available locations [cairo, alex, giza]");
             //}

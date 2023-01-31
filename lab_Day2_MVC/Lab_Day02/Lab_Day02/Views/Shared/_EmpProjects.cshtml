@@ -1,0 +1,68 @@
+﻿@model EmpProjectsVM
+
+<form asp-action="EditEmpProjects" asp-controller="WorkOn">
+
+    <div class="form-group">
+        <label asp-for="EmpSSN"></label>
+        <select asp-for="EmpSSN" asp-items="ViewBag.emps" class="form-control">
+            <option>Choose an Employee</option>
+        </select>
+    </div>
+    <div>
+        <span asp-validation-for="EmpSSN" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group" id="PList">
+        <label asp-for="ProjectNum"></label>
+        <select asp-for="ProjectNum" asp-items="ViewBag.projects" class="form-control">
+            <option>Choose a Project</option>
+        </select>
+    </div>
+    <div>
+        <span asp-validation-for="ProjectNum" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group" id="hoursInput">
+        <label asp-for="WorksHours"></label>
+        <input asp-for="WorksHours" class="form-control" />
+    </div>
+    <div>
+        <span asp-validation-for="WorksHours" class="text-danger"></span>
+    </div>
+
+
+    <input type="submit" value="Update" />
+</form>
+
+
+@section Scripts{
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<script>
+
+    var empInput = document.getElementById("EmpSSN");
+    var PList = document.getElementById("PList");
+    var Project = document.getElementById("ProjectNum");
+    var hoursInput = document.getElementById("hoursInput");
+
+    empInput.addEventListener("change", async () => {
+        var projectResult = await fetch("http://localhost:5179/WorkOn/EditEmpProjects_Projects/" + empInput.value)
+         projectList = await projectResult.text();
+        console.log(projectList);
+        PList.innerHTML = projectList;
+        Project = document.getElementById("ProjectNum");
+
+        addEventListener("change", async () => {
+            var hoursResult = await fetch("http://localhost:5179/WorkOn/EditEmpProjects_Hours/" + empInput.value + "/?ProjectNum=" + Project.value)
+            var hoursValue = await hoursResult.text();
+            console.log(hoursValue);
+            hoursInput.innerHTML = hoursValue;
+        })
+    });
+    
+</script>

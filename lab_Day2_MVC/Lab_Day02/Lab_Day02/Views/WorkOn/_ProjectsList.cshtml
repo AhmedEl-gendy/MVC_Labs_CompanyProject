@@ -1,0 +1,8 @@
+﻿@model WorkOn
+
+<div class="form-group">
+        <label asp-for="ProjectNum"></label>
+        <select asp-for="ProjectNum" asp-items="ViewBag.projects" class="form-control">
+            <option>Choose a Project</option>
+        </select>
+    </div>

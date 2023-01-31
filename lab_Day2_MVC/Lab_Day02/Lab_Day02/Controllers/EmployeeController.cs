@@ -1,5 +1,6 @@
 ﻿
 using Lab_Day02.Models;
+using Lab_Day02.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,14 +8,18 @@ namespace Lab_Day02.Controllers
 {
     public class EmployeeController : Controller
     {
-        private MVC_DbContext dbContext;
-        public EmployeeController()
+        MVC_DbContext dbContext;
+
+        IEmployeeRepository employeeService;
+
+        public EmployeeController(IEmployeeRepository _employeeService)
         {
             dbContext = new MVC_DbContext();
+            employeeService = _employeeService;
         }
         public IActionResult Index()
         {
-            List<Employee> employees = dbContext.Employees.ToList();
+            List<Employee> employees = employeeService.getAll();
             return View(employees);
         }
 
@@ -31,13 +36,11 @@ namespace Lab_Day02.Controllers
         {
             
             int employeeSSN = (int)HttpContext.Session.GetInt32("SSN");
-            var employee = dbContext.Employees.Include(e => e.Supervisor).Include(e => e.Department).Include(e => e.Dependents).SingleOrDefault(c => c.SSN == employeeSSN);
+            var employee = employeeService.getFullInfoById(employeeSSN);
             if (employee == null)
             {
                 return View("Error");
             }
-            //var depeartment = dbContext.Departments.ToList();
-            //ViewBag.depeartment = depeartment;
             return View(employee);
         }
 
@@ -47,7 +50,7 @@ namespace Lab_Day02.Controllers
         public IActionResult AddEmployee()
         {
 
-            List<Employee> employees = dbContext.Employees.ToList();
+            List<Employee> employees = employeeService.getAll();
             return View(employees);
         }
 
@@ -55,17 +58,16 @@ namespace Lab_Day02.Controllers
         {
 
 
-            dbContext.Employees.Add(employee);
-            dbContext.SaveChanges();
+            employeeService.create(employee);
 
-            List<Employee> employees = dbContext.Employees.ToList();
+            List<Employee> employees = employeeService.getAll();
             return View("Index", employees);
         }
 
         public IActionResult Edit(int id)
         {
-            Employee employee = dbContext.Employees.SingleOrDefault(c => c.SSN == id);
-            List<Employee> employees = dbContext.Employees.ToList();
+            Employee employee = employeeService.getById(id);
+            List<Employee> employees = employeeService.getAll();
             List<Department> departments = dbContext.Departments.ToList();
             ViewBag.department = departments;
 
@@ -75,29 +77,14 @@ namespace Lab_Day02.Controllers
 
         public IActionResult EditDb(Employee employee)
         {
-            Employee oldData = dbContext.Employees.FirstOrDefault(c => c.SSN == employee.SSN);
-            if (oldData != null)
-            {
-                oldData.Fname = employee.Fname;
-                oldData.Lname = employee.Lname;
-                oldData.Address = employee.Address;
-                oldData.Salary = employee.Salary;
-                oldData.BirthDate = employee.BirthDate;
-                oldData.Sex = employee.Sex;
-                oldData.SupervisorID = employee.SupervisorID;
-                oldData.DepartmentNum = employee.DepartmentNum;
-
-            }
-            dbContext.SaveChanges();
+            employeeService.update(employee);
 
             return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Delete(int id)
         {
-            Employee employee = dbContext.Employees.SingleOrDefault(c => c.SSN == id);
-            dbContext.Employees.Remove(employee);
-            dbContext.SaveChanges();
+            employeeService.delete(id);
             return RedirectToAction(nameof(Index));
         }
 
@@ -108,7 +95,7 @@ namespace Lab_Day02.Controllers
 
         public IActionResult LoginSSN(int SSN, string Fname)
         {
-            var employee = dbContext.Employees.SingleOrDefault(e => e.SSN == SSN && e.Fname == Fname);
+            var employee = employeeService.getByIdAndFname(SSN,Fname);
             if (employee == null)
             {
                 // login failed

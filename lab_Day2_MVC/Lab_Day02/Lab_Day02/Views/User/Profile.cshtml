@@ -1,0 +1,29 @@
+﻿
+
+<div class="container">
+    <h1 class="text-center my-5">Profile</h1>
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">User Information</h5>
+                        <p class="card-text">
+                            <strong>Username:</strong> @Model.UserName<br />
+                            <strong>Address:</strong> @Model.Address<br />
+                            <strong>Age:</strong> @Model.Age
+                        </p>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-danger">
+                    You must be logged in to view this information.
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

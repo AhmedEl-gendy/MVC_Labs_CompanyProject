@@ -1,7 +1,37 @@
 ﻿
 @model Department
 
-<h1>Department Info</h1>
+<h1 class="text-center">Department Info</h1>
+<ul class="list-group">
+    <li class="list-group-item">ID: @Model.DeptNum</li>
+    <li class="list-group-item">Name: @Model.DeptName</li>
+    <li class="list-group-item">Started Date: @Model.ManagerHiredate</li>
+    <li class="list-group-item">Locations:</li>
+    <ul class="list-group">
+        @foreach (var item in Model.Locations)
+        {
+            <li class="list-group-item">Location: @item.Loc</li>
+        }
+    </ul>
+    <li class="list-group-item">Department Employees:</li>
+    <ul class="list-group">
+        @foreach (var emp in Model.Employees)
+        {
+            <li class="list-group-item">@(emp.Fname + " " + emp.Lname)</li>
+        }
+    </ul>
+</ul>
+<br />
+<a class="btn btn-primary btn-lg btn-block" href="/department/ShowDeptProjects">Show Department Projects</a>
+
+
+
+
+
+
+
+
+@*<h1>Department Info</h1>
 <ul>
     <li> ID: @Model.DeptNum</li>
     <li>Name: @Model.DeptName</li>
@@ -22,4 +52,4 @@
     </ul>
 </ul>
 <br />
-<a href="/department/ShowDeptProjects">Show Department Projects</a>
+<a href="/department/ShowDeptProjects">Show Department Projects</a>*@

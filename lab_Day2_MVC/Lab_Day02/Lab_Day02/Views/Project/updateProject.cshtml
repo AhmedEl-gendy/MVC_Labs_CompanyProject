@@ -5,6 +5,7 @@
 }
 
 @model Project
+
 <form asp-action="updateProjectDB" asp-controller="Project">
     <input asp-for="ProjectNumber" hidden />
 
@@ -19,7 +20,7 @@
         <option>Choose a Department</option>
     </select>
 
-
-    <input type="submit" value="Update" />
+    <br />
+    <input type="submit" value="Update" class="btn btn-primary" />
 </form>
 

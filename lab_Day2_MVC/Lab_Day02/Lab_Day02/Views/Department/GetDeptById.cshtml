@@ -4,6 +4,77 @@
 @{
 }
 @model Department
+
+<div class="container">
+    <h1>Department Data: </h1>
+    <br />
+    <div class="row">
+        <div class="col-4">
+            <p>Number: @Model.DeptNum</p>
+        </div>
+        <div class="col-4">
+            <p>Name: @Model.DeptName</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <p>Manager: @ViewBag.Employee.Fname</p>
+        </div>
+        <div class="col-4">
+            <p>Started Date: @Model.ManagerHiredate</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <ul>
+                <li>Locations:</li>
+                <ul>
+                    @foreach (var item in Model.Locations)
+                    {
+                        <li>Location: @item.Loc</li>
+                    }
+                </ul>
+            </ul>
+        </div>
+        <div class="col-4">
+            <ul>
+                <li>Department Employees:</li>
+                <ul>
+                    @foreach (var emp in Model.Employees)
+                    {
+                        <li>@(emp.Fname + " " + emp.Lname)</li>
+                    }
+                </ul>
+            </ul>
+        </div>
+        <div class="col-4">
+            <ul>
+                <li>Department Projects:</li>
+                <ul>
+                    @foreach (var p in Model.Projects)
+                    {
+                        <li>@p.ProjectName</li>
+                    }
+                </ul>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <br />
+            <a href="/Department/displayDepartments" class="btn btn-primary">Go To All Departments</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+@*
+
 <h1>Department Data: </h1>
 
 <p>Number: @Model.DeptNum</p>
@@ -41,4 +112,5 @@
 
 <br />
 
-<a href="/Department/displayDepartments">Go To All Departments</a>
+<a href="/Department/displayDepartments">Go To All Departments</a>*@
+

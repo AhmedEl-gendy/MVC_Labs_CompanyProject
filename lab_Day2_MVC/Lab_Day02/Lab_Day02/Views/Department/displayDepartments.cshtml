@@ -6,7 +6,48 @@
 }
 @model List<Department>
 
-<h1>Departments</h1>
+
+<div class="container">
+    <h1 class="text-center my-5">Departments</h1>
+    <div class="text-right my-3">
+        <a class="btn btn-primary" href="/Department/addDepartment">Add Department</a>
+    </div>
+    <table class="table table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Details</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var d in Model)
+            {
+                <tr>
+                    <td>@(index++)</td>
+                    <td>@d.DeptName</td>
+                    <td><a class="btn btn-secondary" href="/Department/GetDeptById/@d.DeptNum">Details</a></td>
+                    <td><a class="btn btn-primary" href="/Department/updateDepartment/@d.DeptNum">Edit</a></td>
+                    <td><a class="btn btn-danger" href="/Department/deleteDepartment/@d.DeptNum">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+@*<h1>Departments</h1>
 
 <a href="/Department/addDepartment">Add Department</a>
 <br />
@@ -33,4 +74,4 @@
             </tr>
         }
     </tbody>
-</table>
+</table>*@

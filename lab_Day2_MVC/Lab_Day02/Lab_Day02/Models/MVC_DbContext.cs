@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System.Xml;
+using Lab_Day02.ViewModels;
 
 namespace Lab_Day02.Models
 {
-    public class MVC_DbContext : DbContext
+    public class MVC_DbContext : IdentityDbContext<ApplicationUser>
     {
         public MVC_DbContext()
         {
@@ -56,9 +58,16 @@ namespace Lab_Day02.Models
                 //b.HasKey(e => e.ProjectNumber);
                 b.Property(e => e.ProjectNumber).ValueGeneratedOnAdd();
             });
+
+            base.OnModelCreating(modelBuilder);
         }
+
+        public DbSet<Lab_Day02.ViewModels.RegistrationVM> RegistrationVM { get; set; } = default!;
+
+        public DbSet<Lab_Day02.ViewModels.LoginVM> LoginVM { get; set; } = default!;
         
 
 
     }
+
 }

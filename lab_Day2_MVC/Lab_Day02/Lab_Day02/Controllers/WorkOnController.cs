@@ -32,7 +32,7 @@ namespace Lab_Day02.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditEmpProjects(WorkOn wo)
+        public IActionResult EditEmpProjects(EmpProjectsVM wo)
         {
             var old = Db.WorksOn.SingleOrDefault(e => e.EmpSSN == wo.EmpSSN && e.ProjectNum == wo.ProjectNum);
             old.WorksHours = wo.WorksHours;
@@ -40,10 +40,9 @@ namespace Lab_Day02.Controllers
             if (ModelState.IsValid)
             {
                 Db.SaveChanges();
-
-                return RedirectToAction("Index");
+ 
             }
-            return View("_EmpProjects");
+            return RedirectToAction("Index","Home");
         }
 
         public IActionResult EditEmpProjects_Projects(int id)

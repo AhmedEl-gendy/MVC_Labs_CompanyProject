@@ -3,6 +3,40 @@
     ViewData["Title"] = "LogIn";
 }
 @model Employee
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="text-center">Log In</h1>
+                </div>
+                <div class="card-body">
+                    <form action="/Employee/LoginSSN">
+                        <div class="form-group">
+                            <label for="SSN">Username</label>
+                            <input type="text" id="SSN" name="SSN" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Fname">Name</label>
+                            <input type="text" id="Fname" name="Fname" class="form-control" />
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="submit" value="Log in" class="btn btn-primary mt-3" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@*
 <h1>LogIn</h1>
 
 <form action="/Employee/LoginSSN">
@@ -11,4 +45,4 @@
     <label for="Fname">Name</label>
     <input type="text" id="Fname" name="Fname" />
     <input type="submit" value="Log in"/>
-</form>
+</form>*@

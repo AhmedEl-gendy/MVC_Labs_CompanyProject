@@ -12,7 +12,7 @@ namespace Lab_Day02.ViewModels
 
         [Display(Name = "Project")]
         [Required(ErrorMessage = "Selecting a Project is required")]
-        public string? ProjectNum { get; set; }
+        public int? ProjectNum { get; set; }
 
         [Display(Name = "Working Hours")]
         [Required(ErrorMessage = "Work hours is required")]

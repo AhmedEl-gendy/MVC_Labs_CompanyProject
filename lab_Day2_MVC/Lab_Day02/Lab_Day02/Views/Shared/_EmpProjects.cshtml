@@ -32,8 +32,8 @@
         <span asp-validation-for="WorksHours" class="text-danger"></span>
     </div>
 
-
-    <input type="submit" value="Update" />
+    <br />
+    <input type="submit" value="Update" class="btn btn-primary" />
 </form>
 
 
@@ -57,7 +57,7 @@
         PList.innerHTML = projectList;
         Project = document.getElementById("ProjectNum");
 
-        addEventListener("change", async () => {
+        Project.addEventListener("change", async () => {
             var hoursResult = await fetch("http://localhost:5179/WorkOn/EditEmpProjects_Hours/" + empInput.value + "/?ProjectNum=" + Project.value)
             var hoursValue = await hoursResult.text();
             console.log(hoursValue);

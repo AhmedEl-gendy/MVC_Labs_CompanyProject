@@ -1,5 +1,6 @@
 using Lab_Day02.Models;
 using Lab_Day02.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
@@ -16,6 +17,19 @@ builder.Services.AddDbContext<MVC_DbContext>(Options =>
 builder.Services.AddSession(options =>
 options.IdleTimeout = TimeSpan.FromDays(1));
 
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<MVC_DbContext>();
+
+builder.Services.Configure<IdentityOptions>(opts =>
+{
+    opts.Password.RequireNonAlphanumeric = false;
+    opts.Password.RequireDigit = false;
+    opts.Password.RequireLowercase = false;
+    opts.Password.RequireUppercase = false;
+    opts.Password.RequiredLength = 5;
+    opts.User.RequireUniqueEmail = true;
+});
+
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
 
@@ -31,6 +45,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseSession();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

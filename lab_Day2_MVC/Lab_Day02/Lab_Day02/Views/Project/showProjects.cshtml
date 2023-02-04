@@ -6,6 +6,40 @@
 }
 @model List<Project>
 
+<h1 class="display-4">Projects</h1>
+<br />
+<a href="/Project/addProject" class="btn btn-primary">Add Project</a>
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var d in Model)
+        {
+            <tr class="border-bottom">
+                <td>@(index++)</td>
+                <td>@d.ProjectName</td>
+                <td><a href="/Project/getProjectById/@d.ProjectNumber" class="btn btn-secondary">Details</a></td>
+                <td><a href="/Project/updateProject/@d.ProjectNumber" class="btn btn-warning">Edit</a></td>
+                <td><a href="/Project/deleteProject/@d.ProjectNumber" class="btn btn-danger">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
+@*
 <h1>Projects</h1>
 
 <a href="/Project/addProject">Add Project</a>
@@ -33,4 +67,4 @@
             </tr>
         }
     </tbody>
-</table>
+</table>*@

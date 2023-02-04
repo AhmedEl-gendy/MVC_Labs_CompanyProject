@@ -7,6 +7,40 @@
 }
 @model List<Employee>
 
+
+<a href="/Employee/AddEmployee" class="btn btn-primary">Add Employee</a>
+<br />
+<br />
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Employee in Model)
+        {
+            <tr class="border-bottom">
+                <td>@(index++)</td>
+                <td>@(Employee.Fname + " " + Employee.Lname)</td>
+                <td><a href="/Employee/GetById/@Employee.SSN" class="btn btn-secondary">Details</a></td>
+                <td><a href="/Employee/Edit/@Employee.SSN" class="btn btn-warning">Edit</a></td>
+                <td><a href="/Employee/Delete/@Employee.SSN" class="btn btn-danger">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
+@*
 <a href="/Employee/AddEmployee">Add Employee</a>
 <br />
 <table>
@@ -32,5 +66,5 @@
             </tr>
         }
     </tbody>
-</table>
+</table>*@
 

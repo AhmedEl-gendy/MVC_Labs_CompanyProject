@@ -6,7 +6,49 @@
 }
 @model Employee
 
-<h1>Employee Data: </h1>
+
+<div class="container">
+    <h1 class="text-center">Employee Data:</h1>
+    <br />
+    <div class="row">
+        <div class="col-sm-4">
+            <p><strong>SSN:</strong> @Model.SSN</p>
+            <p><strong>Name:</strong> @(Model.Fname + " " + Model.Lname)</p>
+            <p><strong>Gender:</strong> @Model.Sex</p>
+        </div>
+        <div class="col-sm-4">
+            <p><strong>Address:</strong> @Model.Address</p>
+            <p><strong>Salary:</strong> @Model.Salary</p>
+            <p><strong>BirthDate:</strong> @Model.BirthDate</p>
+        </div>
+        <div class="col-sm-4">
+            <p><strong>Supervisor:</strong> @(Model.Supervisor != null ? Model.Supervisor.Fname : "N/A")</p>
+            <p><strong>Department:</strong> @(Model.Department != null ? Model.Department.DeptName : "N/A")</p>
+        </div>
+    </div>
+    <div class="text-center">
+        <a class="btn btn-success" href="/Employee/EmpDependents">Show Employee Dependents</a>
+        @if (Model.SSN == Model.Department.ManagerSSN)
+        {
+            <a class="btn btn-primary" href="/Department/ShowDepartment">Show Department</a>
+        }
+        else
+        {
+            <p class="text-danger">error</p>
+        }
+        <br />
+        <br />
+        <a class="btn btn-info" href="/Employee/Index">Go To All Employees</a>
+    </div>
+</div>
+
+
+
+
+
+
+
+@*<h1>Employee Data: </h1>
 
 <p>SSN: @Model.SSN</p>
 <p>Name : @(Model.Fname + " " + Model.Lname)</p>
@@ -31,4 +73,4 @@ else
 
 <br />
 
-<a href="/Employee/Index">Go To All Employees</a>
+<a href="/Employee/Index">Go To All Employees</a>*@

@@ -1,6 +1,43 @@
 
 
-<div class="text-center text-success">@TempData["msg"]</div>
+<div class="text-center mt-3 alert alert-success">@TempData["msg"]</div>
+<h1 class="text-center mt-3 mb-3">Dependents</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Sex</th>
+            <th>Birth Date</th>
+            <th>Relationship</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dependent in Model)
+        {
+            <tr>
+                <td>@dependent.DependName</td>
+                <td>@dependent.DependSex</td>
+                <td>@dependent.DependBirthDate</td>
+                <td>@dependent.Relationship</td>
+                <td><a href="/Employee/UpdateDependent/?DependName=@dependent.DependName" class="btn btn-primary">Edit</a></td>
+                <td><a href="/Employee/DeleteDependent?DependName=@dependent.DependName" class="btn btn-danger">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="text-center mt-3">
+    <a href="/Employee/AddDependent" class="btn btn-success">Add Dependent</a>
+</div>
+
+
+
+
+
+
+@*<div class="text-center text-success">@TempData["msg"]</div>
 <h1>Dependents</h1>
 <table>
     <thead>
@@ -27,4 +64,4 @@
         }
     </tbody>
 </table>
-<a href="/Employee/AddDependent">Add Dependent</a>
+<a href="/Employee/AddDependent">Add Dependent</a>*@

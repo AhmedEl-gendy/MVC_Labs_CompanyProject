@@ -5,6 +5,21 @@
 }
 @model Project
 
+<h1 class="display-4">Project Info</h1>
+<ul class="list-group">
+    <li class="list-group-item">ID: @Model.ProjectNumber</li>
+    <li class="list-group-item">Name: @Model.ProjectName</li>
+    <li class="list-group-item">Project Location: @Model.ProjectLocation</li>
+    <li class="list-group-item">Department: @Model.Department.DeptName</li>
+</ul>
+<br />
+<a href="/Project/ShowProjects" class="btn btn-primary">Show Projects</a>
+
+
+
+
+
+@*
 <h1>Project Info</h1>
 <ul>
     <li> ID: @Model.ProjectNumber</li>
@@ -13,4 +28,4 @@
     <li>Department: @Model.Department.DeptName</li>
 </ul>
 <br />
-<a href="/Project/ShowProjects">Show Projects</a>
+<a href="/Project/ShowProjects">Show Projects</a>*@

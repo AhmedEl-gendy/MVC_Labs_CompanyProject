@@ -3,7 +3,30 @@
 *@
 @{
 }
-@using (Html.BeginForm("saveDepartment", "Department", FormMethod.Post))
+
+<form action="@Url.Action("saveDepartment", "Department")" method="post">
+    <div class="form-group">
+        <label for="DeptName">DeptName</label>
+        @Html.TextBox("DeptName", null, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label for="ManagerHiredate">ManagerHiredate</label>
+        @Html.TextBox("ManagerHiredate", null, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label for="ManagerSSN">ManagerSSN</label>
+        @Html.DropDownList("ManagerSSN", Model as SelectList, "Choose a Manager", new { @class = "form-control" })
+    </div>
+    <br />
+    <input type="submit" value="Add" class="btn btn-primary" />
+</form>
+
+
+
+
+@*@using (Html.BeginForm("saveDepartment", "Department", FormMethod.Post))
 {
     @Html.Label("DeptName")
     ;
@@ -21,4 +44,4 @@
     ;
 
     <input type="submit" value="Add" />
-}
+}*@

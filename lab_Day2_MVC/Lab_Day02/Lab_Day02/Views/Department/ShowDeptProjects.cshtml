@@ -1,18 +1,37 @@
 ﻿
 
-<h1>department projects:</h1>
+
+<h1 class="display-4">Department Projects:</h1>
+<ul class="list-group">
+    @foreach (var p in Model)
+    {
+        <br />
+        <li class="list-group-item">Project ID: @p.ProjectNumber</li>
+        <li class="list-group-item">Name: @p.ProjectName</li>
+        <li class="list-group-item">Location: @p.ProjectLocation</li>
+        <br />
+
+    }
+</ul>
+<br />
+<a class="btn btn-primary" href="/Department/addEmpToDeptProject">Add an Employee to the Project</a>
+
+
+
+
+
+@*<h1>department projects:</h1>
 <ul>
     @foreach (var p in Model)
     {
         <br />
-        <li>Numper: @p.ProjectNumber</li>
+        <li>Poject id: @p.ProjectNumber</li>
         <li> name: @p.ProjectName</li>
         <li>location: @p.ProjectLocation</li>
         <br />
         <li>----------------------------</li>
-    }
-    
+    }  
 
 </ul>
 <br />
-<a href="/Department/addEmpToDeptProject">Add an Employee to the Project</a>
+<a href="/Department/addEmpToDeptProject">Add an Employee to the Project</a>*@

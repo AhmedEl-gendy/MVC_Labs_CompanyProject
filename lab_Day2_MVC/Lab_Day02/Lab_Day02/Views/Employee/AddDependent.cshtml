@@ -4,20 +4,45 @@
 @{
 }
 
-<h1>Add Dependent</h1>
+
+<h1 class="text-center my-5">Add Dependent</h1>
+
+<form action="/Employee/AddDependentDB">
+    <input type="hidden" name="EmpSSN" value="ViewBag.employeeSSN" />
+    <div class="form-group">
+        <label for="DependName">Dependent Name:</label>
+        <input type="text" class="form-control" name="DependName" id="DependName" />
+    </div>
+    <div class="form-group">
+        <label for="DependBirthDate">Birth Date:</label>
+        <input type="date" class="form-control" name="DependBirthDate" id="DependBirthDate" />
+    </div>
+    <div class="form-group">
+        <label for="DependSex">Sex:</label>
+        <select class="form-control" name="DependSex" id="DependSex">
+            <option value="">Choose Gender</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="Relationship">Relationship:</label>
+        <input type="text" class="form-control" name="Relationship" id="Relationship" />
+    </div>
+    <br />
+    <input type="submit" value="Add" class="btn btn-primary" />
+</form>
+
+
+
+
+
+
+@*<h1>Add Dependent</h1>
 
 <form action="/Employee/AddDependentDB">
 
-@*    <div class="form-group">
-        <label for="EmpSSN">Supervisor:</label>
-        <select name="EmpSSN" id="EmpSSN">
-            <option value="">Choose Supervisor</option>
-            @foreach (var employee in ViewBag.emp)
-            {
-                <option value="@employee.SSN">@employee.Fname @employee.Lname</option>
-            }
-        </select>
-    </div>*@
+
     <input type="hidden" name="EmpSSN" value="ViewBag.employeeSSN" />
     <div class="form-group">
         <label for="DependName">Dependent Name:</label>
@@ -41,4 +66,4 @@
     </div>
 
         <input type="submit" value="Add" />
-</form>
+</form>*@
